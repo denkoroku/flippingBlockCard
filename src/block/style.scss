@@ -5,10 +5,94 @@
  */
 
 .wp-block-cgb-block-flip-block3  {
-  background: $red;
-  border: 0.2rem solid $black;
-  color: $black;
-  margin: 0 auto;
-  max-width: 740px;
-  padding: 2rem;
+
+  /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-card {
+  background-color: transparent;
+  width: 200px;
+  height: 200px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px;
 }
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: lightgoldenrodyellow;
+  color: black;
+}
+
+/* Style the back side */
+.flip-card-back {
+  background-color: slategrey;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+
+
+    display: flex;
+    //on mobile default to column
+    flex-direction: column;
+    // And let's center the items vertically
+    align-items: center;
+    padding:.5em;
+    //Set a font for the block
+    font-family: 'Avenir', 'Helvetica', sans-serif;
+    box-shadow: 0 0 3px 0 rgba(0,0,0,.3);
+
+    // on tablet or higher, go to a row layout!
+    @media screen and (min-width: 376px) {
+        flex-direction: row;
+    }
+    
+
+    .media-front, .media-back {
+        flex-shrink: 0;
+        width: 100%;
+        margin: 0 0 1em 0;
+
+        @media screen and (min-width: 376px) {
+            width: 35%;
+            margin: 0 1em 0 0;
+        }
+
+        & img {
+            // remove the annoying space underneath images
+            display: block;
+            width: 100%;
+        }
+    }
+
+    // Styles the writing
+    
+    .copy .copy-hd {
+        font-size: 36px;
+        font-weight: 300;
+        margin: 0 0 22px 0;
+        }
+    }
+
