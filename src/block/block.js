@@ -41,11 +41,11 @@ registerBlockType("cgb/block-flip-block3", {
 		},
 		imgUrlFront: {
 			type: "string",
-			default: "http://placehold.it/500"
+			default: "http://placehold.it/200"
 		},
 		imgUrlBack: {
 			type: "string",
-			default: "http://placehold.it/500"
+			default: "http://placehold.it/200"
 		}
 	},
 
@@ -99,6 +99,7 @@ registerBlockType("cgb/block-flip-block3", {
 			</InspectorControls>,
 			<div className={className}>
 				<div className="media-front">
+					<p>Select the front image</p>
 					<MediaUpload
 						onSelect={selectImageFront}
 						render={({ open }) => {
@@ -111,6 +112,7 @@ registerBlockType("cgb/block-flip-block3", {
 					/>
 				</div>
 				<div className="media-back">
+					<p>Select the back image</p>
 					<MediaUpload
 						onSelect={selectImageBack}
 						render={({ open }) => {
