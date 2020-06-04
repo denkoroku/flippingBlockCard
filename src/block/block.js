@@ -126,28 +126,31 @@ registerBlockType("cgb/block-flip-block3", {
 
 		return (
 			<div className={className}>
-				<div className="flip-card">
-					<div className="flip-card-inner">
-						<div className="flip-card-front">
-							<img src={attributes.imgUrlFront} />
-						</div>
-						<div className="flip-card-back">
-							<img src={attributes.imgUrlBack} />
+				<div className="heading">
+					<RichText.Content
+						class="copy-hd"
+						tagName="h2"
+						value={attributes.heading}
+					/>
+				</div>
+					<div className="flip-card">
+						<div className="flip-card-inner">
+							<div className="flip-card-front">
+								<img src={attributes.imgUrlFront} />
+							</div>
+							<div className="flip-card-back">
+								<img src={attributes.imgUrlBack} />
+							</div>
 						</div>
 					</div>
-				</div>
-				<div className="media">
-					<div className="copy">
-						<RichText.Content
-							class="copy-hd"
-							tagName="h2"
-							value={attributes.heading}
-						/>
-						<RichText.Content
-							className="copy-bd"
-							tagName="div"
-							value={attributes.bodyContent}
-						/>
+					<div className="media">
+						<div className="copy">
+							<RichText.Content
+								className="copy-bd"
+								tagName="div"
+								value={attributes.bodyContent}
+							/>
+						</div>
 					</div>
 				</div>
 			</div>
