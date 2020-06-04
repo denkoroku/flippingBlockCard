@@ -39,7 +39,7 @@ registerBlockType("cgb/block-flip-block3", {
 			source: "html",
 			selector: "h2"
 		},
-		imgUrl: {
+		imgUrlFront: {
 			type: "string",
 			default: "http://placehold.it/500"
 		}
@@ -73,7 +73,7 @@ registerBlockType("cgb/block-flip-block3", {
 		function selectImage(value) {
 			console.log(value);
 			setAttributes({
-				imgUrl: value.sizes.full.url
+				imgUrlFront: value.sizes.full.url
 			});
 		}
 
@@ -95,7 +95,7 @@ registerBlockType("cgb/block-flip-block3", {
 						render={({ open }) => {
 							return (
 								<button onClick={open}>
-									<img src={attributes.imgUrl} />
+									<img src={attributes.imgUrlFront} />
 								</button>
 							);
 						}}
@@ -144,7 +144,7 @@ registerBlockType("cgb/block-flip-block3", {
 				<div className="flip-card">
 					<div className="flip-card-inner">
 						<div className="flip-card-front">
-							<img src={attributes.imgUrl}/>
+							<img src={attributes.imgUrlFront}/>
 						</div>
 						<div className="flip-card-back">
 						</div>
