@@ -42,6 +42,10 @@ registerBlockType("cgb/block-flip-block3", {
 		imgUrlFront: {
 			type: "string",
 			default: "http://placehold.it/500"
+		},
+		imgUrlBack: {
+			type: "string",
+			default: "http://placehold.it/500"
 		}
 	},
 
@@ -70,13 +74,18 @@ registerBlockType("cgb/block-flip-block3", {
 			setAttributes({ heading });
 		}
 
-		function selectImage(value) {
+		function selectImageFront(value) {
 			console.log(value);
 			setAttributes({
 				imgUrlFront: value.sizes.full.url
 			});
 		}
-
+		function selectImageBack(value) {
+			console.log(value);
+			setAttributes({
+				imgUrlBack: value.sizes.full.url
+			});
+		}
 		return [
 			<InspectorControls>
 				{/* Later, when we have customizable options we will add stuff here! */}
@@ -89,13 +98,25 @@ registerBlockType("cgb/block-flip-block3", {
 				</div>
 			</InspectorControls>,
 			<div className={className}>
-				<div className="media">
+				<div className="media-front">
 					<MediaUpload
-						onSelect={selectImage}
+						onSelect={selectImageFront}
 						render={({ open }) => {
 							return (
 								<button onClick={open}>
 									<img src={attributes.imgUrlFront} />
+								</button>
+							);
+						}}
+					/>
+				</div>
+				<div className="media-back">
+					<MediaUpload
+						onSelect={selectImageBack}
+						render={({ open }) => {
+							return (
+								<button onClick={open}>
+									<img src={attributes.imgUrlBack} />
 								</button>
 							);
 						}}
@@ -136,37 +157,35 @@ registerBlockType("cgb/block-flip-block3", {
 	 * @returns {Mixed} JSX Frontend HTML.
 	 */
 	save: props => {
-		const className = getBlockDefaultClassName('guty/media-block');
-        const { attributes } = props;
+		const className = getBlockDefaultClassName("guty/media-block");
+		const { attributes } = props;
 
-        return (
-            <div className={className}>
+		return (
+			<div className={className}>
 				<div className="flip-card">
 					<div className="flip-card-inner">
 						<div className="flip-card-front">
-							<img src={attributes.imgUrlFront}/>
+							<img src={attributes.imgUrlFront} />
 						</div>
 						<div className="flip-card-back">
+							<img src={attributes.imgUrlBack} />
 						</div>
 					</div>
-
 				</div>
-                <div className="media">
-                    
-                </div>
-                <div className="copy">
-                    <RichText.Content 
-                        class="copy-hd"
-                        tagName="h2"
-                        value={attributes.heading}
-                        />
-                    <RichText.Content 
-                        className="copy-bd" 
-                        tagName="div" 
-                        value={attributes.bodyContent} 
-                        />
-                </div>
-            </div>
-        );
-    },
+				<div className="media"></div>
+				<div className="copy">
+					<RichText.Content
+						class="copy-hd"
+						tagName="h2"
+						value={attributes.heading}
+					/>
+					<RichText.Content
+						className="copy-bd"
+						tagName="div"
+						value={attributes.bodyContent}
+					/>
+				</div>
+			</div>
+		);
+	}
 });
